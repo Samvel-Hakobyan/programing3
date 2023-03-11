@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+    <script src="grass.js"></script>
+    <script src="grassEater.js"></script>
+    <script src="predator.js"></script>
+    <script src="jur.js"></script>
+    <script src="bomb.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    
+        <h1>Game of life</h1>
+      <div class="abouts">
+        <div class="grass">
+          <div class="grassBlock">
+              </div>
+              <h2>Grass</h2>
+                <p>Grass - Spawn in nearby 8 cages.</p>
+            </div>
+          
+            <div class="grassEater">
+              <div class="grassEaterBlock">
+              </div>
+              <h2>Herbivores</h2>
+                <p>Herbivores - Live by eating grasses.</p>
+            </div>
+          
+            <div class="predator">
+              <div class="predatorBlock">
+                
+              </div>
+              <h2>Predator</h2>
+                <p>Predator - Eats herbivores.</p>
+              </div>
+          
+              <div class="water">
+                <div class="waterBlock">
+            </div>
+                
+            <h2>Water</h2>
+            <p>Water - Distributed over its regions and gives out grass.</p>
+          </div>
+
+          <div class="bomb">
+            <div class="bombBlock">
+            </div>
+            <h2>Mine</h2>
+                <p>Mine - Placed in random boxes spread to the nearest 5 boxes.</p>
+          </div>
+            
+       </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+body {
+    background: #333;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    width: 100%;
+  }
+  h1{
+    color: #ffffff;
+    font-size: 50px;
+  }
+  .abouts {
+    background: #fff;
+    border: 5px solid #222;
+    border-radius: 18px;
+    display: flex;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 2rem;
+    width: clamp(1100px, 50%, 800px);
+    justify-content: space-between;
+}
+
+  .abouts:before {
+    content: "";
+    background: linear-gradient(130deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
+    border: 5px solid #222;
+    border-radius: 18px;
+    height: 100%;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  .email-link {
+    padding: 1rem;
+  }
+  
+  .email-link:not(:last-child) {
+    border-right: 1px solid #ccc;
+  }
+  
+  .email-link svg {
+    filter: drop-shadow(1px 0 5px hsla(170, 0%, 0%, 0.5));
+    margin-right: 10px;
+    position: relative;
+    top: 4px;
+  }
+
+   .grassBlock{
+    background-color: green;
+    width: 30px;
+    height: 30px;
+  } 
+  .grassEaterBlock{
+    background-color: yellow;
+    width: 30px;
+    height: 30px;
+  }
+
+  .predatorBlock{
+    background-color: #795548;
+    width: 30px;
+    height: 30px;
+  }
+
+  .waterBlock{
+    background-color: blue;
+    width: 30px;
+    height: 30px;
+  }
+
+  .bombBlock{
+    background-color: black;
+    width: 30px;
+    height: 30px;
+  }
+
+  .abouts>div {
+    width: 150px;
+}
