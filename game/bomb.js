@@ -1,7 +1,6 @@
-class Bomb{
+class Bomb extends LivingCreature{
     constructor(x,y){
-              this.x = x
-              this.y = y
+              super(x,y)
               this.energy = 1
               this.directions = []
     }
@@ -139,6 +138,3 @@ class Bomb{
       matrix[this.y][this.x] = 0;
   }
 }
-
-let b = new Bomb(3,4)
-console.log(b);
