@@ -1,4 +1,6 @@
-class Water extends LivingCreature{
+let LivingCreature = require("./LivingCreature")
+
+module.exports = class Water extends LivingCreature{
     constructor(x, y){
        super(x,y)
         
@@ -26,7 +28,7 @@ class Water extends LivingCreature{
 
     mul() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
         if (newCell && this.energy > 5) {
             let newX = newCell[0];
             let newY = newCell[1];
@@ -79,7 +81,7 @@ class Water extends LivingCreature{
     
     move() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell) {
             let newX = newCell[0];

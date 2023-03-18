@@ -1,4 +1,6 @@
-class Bomb extends LivingCreature{
+let LivingCreature = require("./LivingCreature")
+
+module.exports = class Bomb extends LivingCreature{
     constructor(x,y){
               super(x,y)
               this.energy = 1
@@ -58,7 +60,7 @@ class Bomb extends LivingCreature{
 
   mul() {
       let emptyCell = this.chooseCell(0);
-      let newCell = random(emptyCell)
+      let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
  
       if (newCell && this.energy > 5) {
           let newX = newCell[0];
@@ -75,7 +77,7 @@ class Bomb extends LivingCreature{
 
   eat() {
       let emptyCell = this.chooseCell(1,2,3,4);
-      let newCell = random(emptyCell)
+      let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
       console.log(newCell);
 
       if (newCell) {

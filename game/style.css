@@ -23,7 +23,7 @@ body {
 
   .abouts:before {
     content: "";
-    background: linear-gradient(130deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
+    background-image: url("https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg");
     border: 5px solid #222;
     border-radius: 18px;
     height: 100%;
