@@ -1,5 +1,5 @@
 let LivingCreature = require("./LivingCreature")
-
+let Grass = require("./grass")
 module.exports = class Water extends LivingCreature{
     constructor(x, y){
        super(x,y)
