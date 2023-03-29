@@ -15,9 +15,10 @@ const GrassEater = require("./GrassEater.js")
 const Predator = require("./Predator.js")
 const Bomb = require("./bomb.js")
 const Water = require("./jur.js")
+const Flowers = require("./flowers.js")
 
 
-function matrixGenerator(matrixSize, grass, grassEater, predator, water_count, bomb) {
+function matrixGenerator(matrixSize, grass, grassEater, predator, water_count, bomb, flowers) {
     var matrix = []
 
     for (let i = 0; i < matrixSize; i++) {
@@ -74,17 +75,26 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, water_count, b
         matrix[y][x] = 5
 
     }
+    for (let i = 0; i < flowers; i++) {
+
+        var x = Math.floor(Math.random() * matrixSize)
+        var y = Math.floor(Math.random() * matrixSize)
+
+        matrix[y][x] = 7
+
+    }
 
     io.emit("send matrix", matrix)
     return matrix
 }
 
-matrix = matrixGenerator(30, 40, 15, 5, 10, 5)
+matrix = matrixGenerator(25, 40, 15, 5, 10, 5,100)
 grassArr = []
 grassEaterArr = []
 predatorArr = []
 waterArr = []
 bombArr = []
+flowersArr = []
 
 
 function createObj() {
@@ -106,6 +116,9 @@ function createObj() {
             } else if (matrix[y][x] == 5) {
                 var bomb = new Bomb(x, y)
                 bombArr.push(bomb)
+            } else if (matrix[y][x] == 7) {
+                var flowers = new Flowers(x, y)
+                flowersArr.push(flowers)
             }
         }
     }

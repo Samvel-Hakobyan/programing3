@@ -139,6 +139,10 @@ function updateColor(matrix) {
                     fill("orange")
                     rect (x * side , y * side ,side,side)
                     text('💥', x * side, y * side + tBot)
+                }else if(matrix[y][x] == 7){
+                    fill("pink")
+                    rect (x * side , y * side ,side,side)
+                    text('💐', x * side, y * side + tBot)
                 }
                 else{
                     fill ("gray")

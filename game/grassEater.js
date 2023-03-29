@@ -1,3 +1,4 @@
+const Flowers = require("./flowers");
 let LivingCreature = require("./LivingCreature")
 
 module.exports = class GrassEater  extends LivingCreature{
@@ -18,9 +19,25 @@ module.exports = class GrassEater  extends LivingCreature{
             [this.x + 1, this.y + 1]
         ];
     }
-    chooseCell(char) {
+    chooseCell(char,char1) {
         this.getNewCoordinates();
-        return super.chooseCell(char);
+            let found = [];
+            for (let i in this.directions) {
+                let x = this.directions[i][0];
+                let y = this.directions[i][1];
+        
+                if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
+                    if (matrix[y][x] == char) {
+                        found.push(this.directions[i]);
+                    }
+                }
+                if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
+                    if (matrix[y][x] == char1) {
+                        found.push(this.directions[i]);
+                    }
+                }
+            }
+            return found;
     }
     //բազմանալ
     mul() {
@@ -41,7 +58,7 @@ module.exports = class GrassEater  extends LivingCreature{
 
 //ուտել
     eat() {
-        let emptyCell = this.chooseCell(1);
+        let emptyCell = this.chooseCell(1,7);
         let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell) {
@@ -52,6 +69,11 @@ module.exports = class GrassEater  extends LivingCreature{
             for (let i = 0; i < grassArr.length; i++) {
                 if (grassArr[i].x == newX && grassArr[i].y == newY) {
                     grassArr.splice(i, 1)
+                    break;
+                }
+            } for (let i = 0; i < flowersArr.length; i++) {
+                if (flowersArr[i].x == newX && flowersArr[i].y == newY) {
+                    flowersArr.splice(i, 1)
                     break;
                 }
             }
