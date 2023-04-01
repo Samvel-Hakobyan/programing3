@@ -2,13 +2,15 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-
+var fs = require("fs")
 app.use(express.static("."));
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
 
-server.listen(3000);
+server.listen(3001, () => {
+    console.log("Port 3001 Started")
+});
 
 const Grass = require("./grass.js")
 const GrassEater = require("./GrassEater.js")
@@ -33,8 +35,10 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, water_count, b
 
         var x = Math.floor(Math.random() * matrixSize)
         var y = Math.floor(Math.random() * matrixSize)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 1
+        }
 
-        matrix[y][x] = 1
 
     }
 
@@ -42,8 +46,9 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, water_count, b
 
         var x = Math.floor(Math.random() * matrixSize)
         var y = Math.floor(Math.random() * matrixSize)
-
-        matrix[y][x] = 2
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 2
+        }
 
     }
 
@@ -52,8 +57,9 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, water_count, b
 
         var x = Math.floor(Math.random() * matrixSize)
         var y = Math.floor(Math.random() * matrixSize)
-
-        matrix[y][x] = 3
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 3
+        }
 
     }
 
@@ -63,7 +69,9 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, water_count, b
         var x = Math.floor(Math.random() * matrixSize)
         var y = Math.floor(Math.random() * matrixSize)
 
-        matrix[y][x] = 4
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 4
+        }
 
     }
 
@@ -71,8 +79,9 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, water_count, b
 
         var x = Math.floor(Math.random() * matrixSize)
         var y = Math.floor(Math.random() * matrixSize)
-
-        matrix[y][x] = 5
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 5
+        }
 
     }
     for (let i = 0; i < flowers; i++) {
@@ -80,7 +89,9 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, water_count, b
         var x = Math.floor(Math.random() * matrixSize)
         var y = Math.floor(Math.random() * matrixSize)
 
-        matrix[y][x] = 7
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 7
+        }
 
     }
 
@@ -88,7 +99,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, water_count, b
     return matrix
 }
 
-matrix = matrixGenerator(25, 40, 15, 5, 10, 5,100)
+matrix = matrixGenerator(25, 0, 0, 0, 0, 0, 0)
 grassArr = []
 grassEaterArr = []
 predatorArr = []
@@ -127,6 +138,7 @@ function createObj() {
 
 createObj()
 
+
 function gameMove() {
     for (let i in grassArr) {
         grassArr[i].mul()
@@ -153,5 +165,100 @@ function gameMove() {
     //     }, 1000);
     // }
 }
+function addGrass() {
+    for (var i = 0; i < 2; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 1
+            var gr = new Grass(x, y)
+            grassArr.push(gr)
+        }
+    }
+}
+function addGrassEater() {
+    for (var i = 0; i < 2; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 2
+            var grEat = new GrassEater(x, y)
+            grassEaterArr.push(grEat)
+        }
+    }
+}
+function addPredator() {
+    for (var i = 0; i < 2; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 3
+            var pred = new Predator(x, y)
+            predatorArr.push(pred)
+        }
+    }
+}
+function addWater() {
+    for (var i = 0; i < 2; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 4
+            var waterEnergy = new Water(x, y)
+            waterArr.push(waterEnergy)
+        }
+    }
+}
+function addBomb() {
+    for (var i = 0; i < 2; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 5
+            var bomb = new Bomb(x, y)
+            bombArr.push(bomb)
+        }
+    }
+}
+function addFlowers() {
+    for (var i = 0; i < 2; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 7
+            var flowers = new Flowers(x, y)
+            flowersArr.push(flowers)
+        }
+    }
+}
 
-setInterval(gameMove,1000)
+io.on('connection', function (socket) {
+    createObj();
+    socket.on("add Grass", addGrass)
+    socket.on("add GrassEater", addGrassEater)
+    socket.on("add Predator", addPredator)
+    socket.on("add Water", addWater)
+    socket.on("add Bomb", addBomb)
+    socket.on("add Flowers", addFlowers)
+})
+
+setInterval(function statitics() {
+    // console.log(grassArr.length,waterArr.length);
+
+    countd = {
+        grass: grassArr.length,
+        grassEater: grassEaterArr.length,
+        predator: predatorArr.length,
+        jur: waterArr.length,
+        bomb: bombArr.length,
+        flowers: flowersArr.length
+
+
+    }
+    fs.writeFile("statics.json", JSON.stringify(countd), function () {
+        io.emit("send datas", countd)
+    })
+
+}, 300);
+
+setInterval(gameMove, 1000)

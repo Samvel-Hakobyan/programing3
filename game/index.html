@@ -25,7 +25,7 @@
             </div>
               <h2>Grass</h2>
                 <p>Grass - Spawn in nearby 8 cages.</p>
-                <button>Add Grass</button>
+                <button onclick="addGrass()">Add Grass</button>
 
             </div>
           
@@ -34,8 +34,7 @@
               </div>
               <h2>Herbivores</h2>
                 <p>Herbivores - Live by eating grasses.</p>
-                <button>Add Herbivores</button>
-
+                <button onclick="addGrassEater()">Add Herbivores</button>
             </div>
           
             <div class="predator">
@@ -44,7 +43,7 @@
               </div>
               <h2>Predator</h2>
                 <p>Predator - Eats herbivores.</p>
-            <button>Add Predator</button>
+            <button onclick="addPredator()">Add Predator</button>
 
               </div>
           
@@ -54,7 +53,7 @@
                 
             <h2>Water</h2>
             <p>Water - Distributed over its regions and gives out grass.</p>
-            <button>Add Water</button>
+            <button onclick="addWater()">Add Water</button>
 
           </div>
 
@@ -63,7 +62,7 @@
             </div>
             <h2>Mine</h2>
                 <p>Mine - Placed in random boxes spread to the nearest 5 boxes.</p>
-            <button>Add Mine</button>
+            <button onclick="addBomb()">Add Mine</button>
 
           </div>
           <div class="flowers">
@@ -72,7 +71,7 @@
             
         <h2>Flowers</h2>
         <p>Flowers - Who eats flowers - lives long.</p>
-        <button>Add Flowers</button>
+        <button onclick="addFlowers()">Add Flowers</button>
 
       </div>
             
@@ -80,40 +79,41 @@
        <div class="counters">
         <div class="col-sm-3">
          <div class="counter-count">
-           <span class="count">300</span>
+           <span class="count" id="grass"> </span>
            <h3 class="title">Grass</h3>
          </div>
        </div>
        <div class="col-sm-3">
          <div class="counter-count">
-           <span class="count">300</span>
+           <span class="count" id="grassEater"> </span>
            <h3 class="title">Herbivores</h3>
          </div>
        </div>
        <div class="col-sm-3">
          <div class="counter-count">
-           <span class="count">300</span>
+           <span class="count" id="predator"> </span>
            <h3 class="title">Predator</h3>
          </div>
        </div>
        <div class="col-sm-3">
         <div class="counter-count">
-          <span class="count">300</span>
+          <span class="count" id="water"> </span>
           <h3 class="title">Water</h3>
         </div>
       </div>
       <div class="col-sm-3">
         <div class="counter-count">
-          <span class="count">300</span>
+          <span class="count" id="bomb"> </span>
           <h3 class="title">Mine</h3>
         </div>
       </div>
       <div class="col-sm-3">
         <div class="counter-count">
-          <span class="count">300</span>
+          <span class="count" id="flowers"> </span>
           <h3 class="title">Flowers</h3>
         </div>
       </div>
+     
      </div>
 </body>
 </html>

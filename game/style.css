@@ -134,6 +134,7 @@ body {
 
 .counters{
   display: flex;
+  padding: 25px;
 }
 
 .col-sm-3{

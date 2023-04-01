@@ -64,7 +64,7 @@ const socket = io()
 
 // var matrix = matrixGenerator(30,40,15,5,10,5)
 
-var side = 25
+var side = 35
 
 
 // var grassArr = []
@@ -135,10 +135,10 @@ function updateColor(matrix) {
                     rect (x * side , y * side ,side,side)
                     text('💣', x * side, y * side + tBot);
 
-                }else if(matrix[y][x] == 6){
-                    fill("orange")
-                    rect (x * side , y * side ,side,side)
-                    text('💥', x * side, y * side + tBot)
+                // }else if(matrix[y][x] == 6){
+                //     fill("orange")
+                //     rect (x * side , y * side ,side,side)
+                //     text('💥', x * side, y * side + tBot)
                 }else if(matrix[y][x] == 7){
                     fill("pink")
                     rect (x * side , y * side ,side,side)
@@ -178,4 +178,33 @@ function updateColor(matrix) {
 
 }
 
+function addGrass() {
+    socket.emit("add Grass")
+}
+function addGrassEater() {
+    socket.emit("add GrassEater")
+}
+function addPredator() {
+    socket.emit("add Predator")
+}
+function addWater() {
+   socket.emit("add Water") 
+}
+function addBomb() {
+    socket.emit("add Bomb")
+}
+function addFlowers(){
+    socket.emit("add Flowers")
+}
 socket.on("send matrix", updateColor)
+
+socket.on ("send datas", function(count){
+    let x = count.grass-count.jur
+    document.getElementById("grass").innerHTML =x;
+    document.getElementById("grassEater").innerHTML = count.grassEater;
+    document.getElementById("predator").innerHTML = count.predator;
+    document.getElementById("water").innerHTML = count.jur;
+    document.getElementById("bomb").innerHTML = count.bomb;
+    document.getElementById("flowers").innerHTML = count.flowers;
+    
+})

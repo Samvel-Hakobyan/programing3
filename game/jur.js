@@ -5,7 +5,7 @@ module.exports = class Water extends LivingCreature{
        super(x,y)
         
     }
-    chooseCell(char, char1) {
+    chooseCell(char) {
         var found = [];
 
         for (var i in this.directions) {
@@ -17,29 +17,31 @@ module.exports = class Water extends LivingCreature{
                     found.push(this.directions[i])
                 }
             }
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == char1) {
-                    found.push(this.directions[i])
-                }
-            }
+            // if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
+            //     if (matrix[y][x] == char1) {
+            //         found.push(this.directions[i])
+            //     }
+            // }
         }
         return found;
     }
 
-    mul() {
-        let emptyCell = this.chooseCell(0);
-        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
-        if (newCell && this.energy > 5) {
-            let newX = newCell[0];
-            let newY = newCell[1];
+    // mul() {
+    //     let emptyCell = this.chooseCell(0);
+    //     let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
+    //     if (newCell && this.energy > 5) {
+    //         let newX = newCell[0];
+    //         let newY = newCell[1];
 
-            matrix[newY][newX] = 4;
-            let w = new Water(newX, newY);
-            waterArr.push(w);
+    //         matrix[newY][newX] = 4;
+    //         let w = new Water(newX, newY);
+    //         console.log(w);
+            
+    //         waterArr.push(w);
 
-            this.energy = 2;
-        }
-    }
+    //         this.energy = 2;
+    //     }
+    // }
     
     // eat() {
     //     let emptyCell = this.chooseCell(1);
@@ -91,6 +93,8 @@ module.exports = class Water extends LivingCreature{
             matrix[this.y][this.x] = 1;
 
             let w = new Grass(newX, newY);
+            // console.log(w);
+            
             grassArr.push(w);
             this.x = newX;
             this.y = newY;

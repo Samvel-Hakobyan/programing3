@@ -1,4 +1,4 @@
-const Flowers = require("./flowers");
+
 let LivingCreature = require("./LivingCreature")
 
 module.exports = class GrassEater  extends LivingCreature{
@@ -71,7 +71,8 @@ module.exports = class GrassEater  extends LivingCreature{
                     grassArr.splice(i, 1)
                     break;
                 }
-            } for (let i = 0; i < flowersArr.length; i++) {
+            } 
+            for (let i = 0; i < flowersArr.length; i++) {
                 if (flowersArr[i].x == newX && flowersArr[i].y == newY) {
                     flowersArr.splice(i, 1)
                     break;
