@@ -25,16 +25,18 @@
             </div>
               <h2>Grass</h2>
                 <p>Grass - Spawn in nearby 8 cages.</p>
-                <button onclick="addGrass()">Add Grass</button>
-
-            </div>
-          
+                <button class="addButton"onclick="addGrass()">
+                  <span>Add Grass</span>
+                </button>
+          </div>
             <div class="grassEater">
               <div class="grassEaterBlock">🐇
               </div>
               <h2>Herbivores</h2>
                 <p>Herbivores - Live by eating grasses.</p>
-                <button onclick="addGrassEater()">Add Herbivores</button>
+                <button class="addButton"onclick="addGrassEater()">
+                <span>Add Herbivores</span>
+              </button>
             </div>
           
             <div class="predator">
@@ -43,7 +45,7 @@
               </div>
               <h2>Predator</h2>
                 <p>Predator - Eats herbivores.</p>
-            <button onclick="addPredator()">Add Predator</button>
+            <button class="addButton"onclick="addPredator()"> <span>Add Predator</span></button>
 
               </div>
           
@@ -52,8 +54,8 @@
             </div>
                 
             <h2>Water</h2>
-            <p>Water - Distributed over its regions and gives out grass.</p>
-            <button onclick="addWater()">Add Water</button>
+            <p>Water - Distributed and gives out grass.</p>
+            <button class="addButton"onclick="addWater()"> <span>Add Water</span></button>
 
           </div>
 
@@ -61,8 +63,8 @@
             <div class="bombBlock">💣
             </div>
             <h2>Mine</h2>
-                <p>Mine - Placed in random boxes spread to the nearest 5 boxes.</p>
-            <button onclick="addBomb()">Add Mine</button>
+                <p>Mine - Placed in random boxes spread.</p>
+            <button class="addButton"onclick="addBomb()"> <span>Add Mine</span></button>
 
           </div>
           <div class="flowers">
@@ -71,10 +73,11 @@
             
         <h2>Flowers</h2>
         <p>Flowers - Who eats flowers - lives long.</p>
-        <button onclick="addFlowers()">Add Flowers</button>
+        <button class="addButton" onclick="addFlowers()"><span>Add Flowers</span></button>
 
       </div>
-            
+  
+      </div>
        </div>
        <div class="counters">
         <div class="col-sm-3">
@@ -114,6 +117,40 @@
         </div>
       </div>
      
+     </div>
+
+
+     <div class="content1">
+       <button class="weatherButton" onclick="Weathers(1)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Winter
+      </button>
+      <button class="weatherButton" onclick="Weathers(2)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Summer
+      </button>
+      <button class="weatherButton" onclick="Weathers(3)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Autumn
+      </button>
+      <button class="weatherButton" onclick="Weathers(4)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Spring
+      </button>
+      <button class="Restart" onclick="restart()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Restart
+      </button>
      </div>
 </body>
 </html>

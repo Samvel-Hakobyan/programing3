@@ -8,8 +8,8 @@ app.get('/', function (req, res) {
     res.redirect('index.html');
 });
 
-server.listen(3001, () => {
-    console.log("Port 3001 Started")
+server.listen(3002, () => {
+    console.log("Server Started")
 });
 
 const Grass = require("./grass.js")
@@ -138,10 +138,9 @@ function createObj() {
 
 createObj()
 
-
 function gameMove() {
     for (let i in grassArr) {
-        grassArr[i].mul()
+               grassArr[i].mul()
     }
 
     for (let i in grassEaterArr) {
@@ -166,7 +165,7 @@ function gameMove() {
     // }
 }
 function addGrass() {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 1; i++) {
         var x = Math.floor(Math.random() * matrix[0].length)
         var y = Math.floor(Math.random() * matrix.length)
         if (matrix[y][x] == 0) {
@@ -177,7 +176,7 @@ function addGrass() {
     }
 }
 function addGrassEater() {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 1; i++) {
         var x = Math.floor(Math.random() * matrix[0].length)
         var y = Math.floor(Math.random() * matrix.length)
         if (matrix[y][x] == 0) {
@@ -188,7 +187,7 @@ function addGrassEater() {
     }
 }
 function addPredator() {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 1; i++) {
         var x = Math.floor(Math.random() * matrix[0].length)
         var y = Math.floor(Math.random() * matrix.length)
         if (matrix[y][x] == 0) {
@@ -199,7 +198,7 @@ function addPredator() {
     }
 }
 function addWater() {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 1; i++) {
         var x = Math.floor(Math.random() * matrix[0].length)
         var y = Math.floor(Math.random() * matrix.length)
         if (matrix[y][x] == 0) {
@@ -210,7 +209,7 @@ function addWater() {
     }
 }
 function addBomb() {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 1; i++) {
         var x = Math.floor(Math.random() * matrix[0].length)
         var y = Math.floor(Math.random() * matrix.length)
         if (matrix[y][x] == 0) {
@@ -221,7 +220,7 @@ function addBomb() {
     }
 }
 function addFlowers() {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 1; i++) {
         var x = Math.floor(Math.random() * matrix[0].length)
         var y = Math.floor(Math.random() * matrix.length)
         if (matrix[y][x] == 0) {
@@ -231,9 +230,24 @@ function addFlowers() {
         }
     }
 }
+function restart() {
+    grassArr = []
+    grassEaterArr = []
+    predatorArr = []
+    waterArr = []
+    bombArr = []
+    flowersArr = []
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+            matrix[y][x] = 0;
+        }
+    }
+   
+}
 
 io.on('connection', function (socket) {
     createObj();
+    socket.on("restart", restart)
     socket.on("add Grass", addGrass)
     socket.on("add GrassEater", addGrassEater)
     socket.on("add Predator", addPredator)
@@ -243,7 +257,6 @@ io.on('connection', function (socket) {
 })
 
 setInterval(function statitics() {
-    // console.log(grassArr.length,waterArr.length);
 
     countd = {
         grass: grassArr.length,
@@ -259,6 +272,6 @@ setInterval(function statitics() {
         io.emit("send datas", countd)
     })
 
-}, 300);
+}, 1000);
 
 setInterval(gameMove, 1000)

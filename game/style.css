@@ -1,15 +1,33 @@
-body {
-    background: #333;
+ body {
+    background: linear-gradient(90deg, #3a6186,#89253e);
+    background-size: 300% 300%;
+    animation: animation 3s infinite ease-in-out;
     display: grid;
     height: 100vh;
     place-items: center;
-    width: 100%;
+    width: 1360px;
+    margin: 0 auto;
   }
+  @keyframes animation{
+    0%{
+      background-position: 0 50%;
+    }
+    50%{
+      background-position: 100% 50%;
+    }
+    100%{
+      background-position: 0 50%;
+    }
+  }
+  
+
   h1{
     color: #ffffff;
     font-size: 50px;
+      margin: 15px 200px 25px 0px;
   }
   .abouts {
+    margin: 0 110px 0 0;
     background: #fff;
     border: 5px solid #222;
     border-radius: 18px;
@@ -21,7 +39,7 @@ body {
     justify-content: space-between;
 }
 
-  .abouts:before {
+  /* .abouts:before {
     content: "";
     background-image: url("https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg");
     border: 5px solid #222;
@@ -32,7 +50,7 @@ body {
     top: 1rem;
     width: 100%;
     z-index: -1;
-  }
+  } */
   
   .email-link {
     padding: 1rem;
@@ -134,9 +152,160 @@ body {
 
 .counters{
   display: flex;
+  margin: 0 110px 0 0;
   padding: 25px;
 }
 
 .col-sm-3{
   padding: 0 50px;
 }
+
+.content{
+  position: relative;
+  display: grid;
+  justify-content: center;
+  width: 100%;
+  gap: 40px
+}
+.addButton{
+  padding: 0.1em 0.25em;
+  width: 13em;
+  height: 4.2em;
+  border: 0.08em solid #fff;
+  border-radius: 0.3em;
+  font-size: 12px;
+}
+
+.addButton span{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0.4em;
+  width: 8.25em;
+  height: 2.5em;
+  background-color: #212121;
+  border-radius: 0.2em;
+  font-size: 1.5em;
+  color: #fff;
+  border: 0.08em solid #fff;
+  box-shadow: 0 0.4em 0.1em 0.019em #fff;
+}
+
+.addButton span:hover{
+  transition: all 0.5s;
+  transform: translate(0, 0.4em);
+  box-shadow: 0000 #fff;
+}
+.addButton span:not(hover){
+  transition: all 1s;
+}
+
+.content1 {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  width: 100%;
+  gap:40px;
+  margin: -300px 0px -700px 900px;
+}
+.weatherButton { 
+  position: relative;padding: 1em 1.8em;outline:none;
+  border: 1px solid #303030;
+  background:#212121;
+  color: #fffeff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 15px;overflow: hidden;
+  transition: 0.7s;
+  border-radius: 20px;
+  cursor:pointer;
+  font-weight: bold;
+}
+  .weatherButton:hover { 
+  box-shadow: 0 0 10px #ae00ff , 0 0 25px #001eff, 0 0 50px #ae00ff;
+  transition-delay:0.6s;
+  }
+  .weatherButton span { 
+  position: absolute;
+  }
+  .weatherButton span:nth-child(1){
+  top:0;
+  left: -100%;
+  width: 100%;
+  }
+  .joinchat_tooltip:before {
+    content:"";
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: -6px;
+    border: 8px solid transparent;
+    border-width: 6px 0 6px 8px;
+    border-left-color: #fff;
+  }
+    .bi-person-circle::before {
+    margin-right: 5px;
+    color:#999;
+    }
+    .joinchat_tooltip .text { 
+    color: #525252;
+    font-size: 16px;
+  }
+    .whatsapp-btn:hover {
+    transition: all 0.5s ease-in-out;animation: bounce 1.6s infinite;
+    }
+    @keyframes bounce { 
+    0%, 20%, 50%, 80%, 100% {
+    transform:translateY(0);
+    }
+    40%{ 
+    transform: translateY(-5px);
+    }
+    68%{ 
+    transform: translateY(-5px);
+    }
+  }
+  @media (hover: hover){
+    .whatsapp-btn:hover .joinchat_tooltip { 
+    opacity:1;
+    animation: none;
+    transition: opacity 0.2s;
+    }
+  }
+  .weatherButton:hover span:nth-child(4){
+    bottom: 100%;
+    transition: 0.7s;
+    transition-delay: 0.52s;
+  }
+ .weatherButton:active{
+    background: #ae00af;
+    background: linear-gradient(to top right, #ae00af, #001eff);
+    color: #bfbfbf;
+    box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
+    transition: 0.1s;
+  }
+  .weatherButton:active span:nth-child(1)
+  span:nth-child(2)
+  span:nth-child(2)
+  span:nth-child(2){
+    transition: none;
+    transition-delay: none;
+  }
+
+  .Restart { 
+    position: relative;padding: 1em 1.8em;outline:none;
+    border: 1px solid #303030;
+    background: red;
+    color: #fffeff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;overflow: hidden;
+    transition: 0.7s;
+    border-radius: 20px;
+    cursor:pointer;
+    font-weight: bold;
+  }
+  button{
+    cursor: pointer;
+  }

@@ -103,6 +103,27 @@ function setup() {
         
     }
 
+let weather = []
+function Weathers(i) {
+    let color = []
+    if (i == 1) {
+        color = ["white"]
+    }
+    else if (i == 2) {
+        color = ["green"]
+    }
+    else if (i == 3) {
+        color = ["#ffd966"]
+    }
+    else if (i == 4) {
+        color = ["#f27809"]
+    }
+    else if (i == 5){
+    }
+    weather = color
+    return weather
+}
+Weathers(3)
 
 function updateColor(matrix) {
     
@@ -111,7 +132,7 @@ function updateColor(matrix) {
             var tBot = side - side * 0.3
             textSize(tBot);
                 if(matrix[y][x] == 1){
-                    fill ("green")
+                    fill (weather[0])
                     rect (x * side , y * side ,side,side)
                     text('🌿', x * side, y * side + tBot);
 
@@ -140,7 +161,7 @@ function updateColor(matrix) {
                 //     rect (x * side , y * side ,side,side)
                 //     text('💥', x * side, y * side + tBot)
                 }else if(matrix[y][x] == 7){
-                    fill("pink")
+                    fill(weather[0])
                     rect (x * side , y * side ,side,side)
                     text('💐', x * side, y * side + tBot)
                 }
@@ -175,9 +196,10 @@ function updateColor(matrix) {
     //        bombArr[i].die()
     //     }, 1000);
     // }
-
 }
-
+function restart(){
+    socket.emit("restart")
+}
 function addGrass() {
     socket.emit("add Grass")
 }
@@ -196,6 +218,7 @@ function addBomb() {
 function addFlowers(){
     socket.emit("add Flowers")
 }
+
 socket.on("send matrix", updateColor)
 
 socket.on ("send datas", function(count){
