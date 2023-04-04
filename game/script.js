@@ -74,7 +74,8 @@ var side = 35
 // var bombArr = []
 
 
-
+// socket.on('weather', weath)
+// console.log(weath)
 function setup() {
     frameRate(15)
     createCanvas(30 * side ,30 * side)

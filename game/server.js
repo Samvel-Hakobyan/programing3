@@ -8,7 +8,7 @@ app.get('/', function (req, res) {
     res.redirect('index.html');
 });
 
-server.listen(3002, () => {
+server.listen(3000, () => {
     console.log("Server Started")
 });
 
@@ -140,7 +140,7 @@ createObj()
 
 function gameMove() {
     for (let i in grassArr) {
-               grassArr[i].mul()
+        grassArr[i].mul()
     }
 
     for (let i in grassEaterArr) {
@@ -155,7 +155,7 @@ function gameMove() {
         waterArr[i].move()
     }
 
-    io.emit("send matrix", matrix)
+    io.sockets.emit("send matrix", matrix)
 
     // for (let i in bombArr) {
     //     bombArr[i].eat()
@@ -243,6 +243,19 @@ function restart() {
         }
     }
    
+}
+
+weath = "winter";
+
+ () => {
+    if (weath == "winter") {
+        for (let i in grassArr) {
+            setInterval(() => {
+                grassArr[i].mul()
+            },3000)
+        }
+    }
+    io.emit('weather', weath)
 }
 
 io.on('connection', function (socket) {
